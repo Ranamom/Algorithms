@@ -4,14 +4,14 @@ import static com.google.common.truth.Truth.assertThat;
 
 import com.williamfiset.algorithms.utils.graphutils.Utils;
 import java.util.*;
-import org.junit.*;
+import org.junit.jupiter.api.*;
 
 public class BipartiteGraphCheckAdjacencyListTest {
 
   private List<List<Integer>> graph;
   private BipartiteGraphCheckAdjacencyList solver;
 
-  @Before
+  @BeforeEach
   public void setUp() {}
 
   @Test

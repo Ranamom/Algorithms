@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
-import org.junit.*;
+import org.junit.jupiter.api.*;
 
 // You can set the hash value of this object to be whatever you want
 // This makes it great for testing special cases.
@@ -26,7 +26,9 @@ class ConstObj {
 
   @Override
   public boolean equals(Object o) {
-    return data == ((ConstObj) o).data;
+    if (this == o) return true;
+    else if (o instanceof ConstObj) return data == ((ConstObj) o).data;
+    else return false;
   }
 }
 
@@ -40,7 +42,7 @@ public class HSetTest {
 
   HSet<Integer> hs;
 
-  @Before
+  @BeforeEach
   public void setup() {
     hs = new HSet<>();
   }

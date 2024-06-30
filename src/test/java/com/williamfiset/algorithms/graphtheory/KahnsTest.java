@@ -1,11 +1,12 @@
 package com.williamfiset.algorithms.graphtheory;
 
 import static com.google.common.truth.Truth.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.williamfiset.algorithms.utils.graphutils.GraphGenerator;
 import com.williamfiset.algorithms.utils.graphutils.Utils;
 import java.util.*;
-import org.junit.*;
+import org.junit.jupiter.api.*;
 
 public class KahnsTest {
 
@@ -40,7 +41,7 @@ public class KahnsTest {
     return true;
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void cycleInGraph() {
     List<List<Integer>> g = Utils.createEmptyAdjacencyList(4);
     Utils.addDirectedEdge(g, 0, 1);
@@ -48,7 +49,7 @@ public class KahnsTest {
     Utils.addDirectedEdge(g, 2, 3);
     Utils.addDirectedEdge(g, 3, 0);
     Kahns solver = new Kahns();
-    solver.kahns(g);
+    assertThrows(IllegalArgumentException.class, () -> solver.kahns(g));
   }
 
   @Test

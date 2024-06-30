@@ -6,10 +6,11 @@
 package com.williamfiset.algorithms.graphtheory;
 
 import static com.google.common.truth.Truth.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
 
 import com.google.common.collect.ImmutableList;
 import java.util.*;
-import org.junit.*;
+import org.junit.jupiter.api.*;
 
 public class KosarajuTest {
 
@@ -25,9 +26,9 @@ public class KosarajuTest {
     graph.get(from).add(to);
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void nullGraphConstructor() {
-    new Kosaraju(null);
+    assertThrowsExactly(IllegalArgumentException.class, () -> new Kosaraju(null));
   }
 
   @Test

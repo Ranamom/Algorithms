@@ -1,24 +1,20 @@
-apply plugin: 'java'
-apply plugin: "com.github.sherter.google-java-format"
-apply plugin: 'application'
-
-mainClassName = findProperty("main") ?: "com.williamfiset.algorithms.${findProperty("algorithm") ?: 'missingPackage.missingClass'}"
-
 buildscript {
   repositories {
     maven {
       url "https://plugins.gradle.org/m2/"
     }
   }
-  dependencies {
-    // https://github.com/sherter/google-java-format-gradle-plugin
-    classpath "gradle.plugin.com.github.sherter.google-java-format:google-java-format-gradle-plugin:0.8"
-  }
 }
 
-// Require Java 8
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+plugins {
+  // https://github.com/diffplug/spotless
+  id("com.diffplug.spotless") version "6.20.0"
+}
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = findProperty("main") ?: "com.williamfiset.algorithms.${findProperty("algorithm") ?: 'missingPackage.missingClass'}"
 
 repositories {
   mavenLocal()
@@ -29,28 +25,36 @@ repositories {
 // 'compile' for project dependencies.
 dependencies {
   // Apache commons lang
-  testImplementation 'org.apache.commons:commons-lang3:3.6'
-
-  // JUnit framework
-  testImplementation 'junit:junit:4.+'
+  testImplementation 'org.apache.commons:commons-lang3:3.13.0'
 
   // JUnit 5 / Jupiter
-  testImplementation('org.junit.jupiter:junit-jupiter-api:5.4.2')
-   
+  testImplementation('org.junit.jupiter:junit-jupiter:5.10.0')
+  testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.10.0')
+
   // Google Guava lib
-  testImplementation group: 'com.google.guava', name: 'guava', version: '22.0'
+  testImplementation group: 'com.google.guava', name: 'guava', version: '32.1.2-jre'
 
   // Google Truth test framework
   // https://mvnrepository.com/artifact/com.google.truth/truth
-  testImplementation group: 'com.google.truth', name: 'truth', version: '1.0'
+  testImplementation group: 'com.google.truth', name: 'truth', version: '1.1.5'
 
   // Test mocking framework
-  testImplementation "org.mockito:mockito-core:1.+"
+  testImplementation "org.mockito:mockito-core:5.+"
+}
+
+spotless {
+  java {
+    googleJavaFormat()
+  }
 }
 
 test {
   dependsOn cleanTest
   testLogging.showStandardStreams = true
+}
+
+tasks.named('test', Test) {
+  useJUnitPlatform()
 }
 
 tasks.withType(JavaCompile) {

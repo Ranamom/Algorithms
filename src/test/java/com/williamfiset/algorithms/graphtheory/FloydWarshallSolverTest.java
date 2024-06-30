@@ -3,8 +3,7 @@ package com.williamfiset.algorithms.graphtheory;
 import static com.google.common.truth.Truth.assertThat;
 
 import java.util.*;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.*;
 
 public class FloydWarshallSolverTest {
 
@@ -13,7 +12,7 @@ public class FloydWarshallSolverTest {
 
   static double[][] matrix1, matrix2, matrix3;
 
-  @Before
+  @BeforeEach
   public void setup() {
     matrix1 =
         new double[][] {

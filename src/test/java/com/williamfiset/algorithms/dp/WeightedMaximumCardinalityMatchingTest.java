@@ -3,7 +3,7 @@ package com.williamfiset.algorithms.dp;
 import static com.google.common.truth.Truth.assertThat;
 
 import java.util.*;
-import org.junit.*;
+import org.junit.jupiter.api.*;
 
 public class WeightedMaximumCardinalityMatchingTest {
 
@@ -398,7 +398,7 @@ public class WeightedMaximumCardinalityMatchingTest {
     for (int loop = 0; loop < LOOPS; loop++) {
       int n = Math.max(1, (int) (Math.random() * 6)) * 2; // n is either 2,4,6,8, or 10
       Double[][] costMatrix = new Double[n][n];
-      randomFillSymmetricMatrix(costMatrix, /*maxValue=*/ 10000);
+      randomFillSymmetricMatrix(costMatrix, /* maxValue= */ 10000);
 
       MwpmInterface[] impls = getImplementations(costMatrix);
       for (MwpmInterface mwpm : impls) {
@@ -416,7 +416,7 @@ public class WeightedMaximumCardinalityMatchingTest {
     for (int loop = 0; loop < LOOPS; loop++) {
       int n = Math.max(1, (int) (Math.random() * 6)) * 2; // n is either 2,4,6,8, or 10
       Double[][] costMatrix = new Double[n][n];
-      randomFillSymmetricMatrix(costMatrix, /*maxValue=*/ 3);
+      randomFillSymmetricMatrix(costMatrix, /* maxValue= */ 3);
 
       MwpmInterface[] impls = getImplementations(costMatrix);
       for (MwpmInterface mwpm : impls) {

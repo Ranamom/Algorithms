@@ -6,15 +6,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.PriorityQueue;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.*;
 
 public class MinDHeapTest {
 
   static final int LOOPS = 1000;
   static final int MAX_SZ = 100;
 
-  @Before
+  @BeforeEach
   public void setup() {}
 
   @Test
@@ -196,6 +195,7 @@ public class MinDHeapTest {
     assertThat(pq.poll()).isEqualTo(11);
     assertThat(pq.poll()).isEqualTo(13);
   }
+
   /*
   @Test
   public void testRandomizedPolling() {

@@ -9,7 +9,7 @@ import static com.williamfiset.algorithms.strings.LongestCommonSubstring.LcsSolv
 import com.google.common.collect.ImmutableList;
 import com.williamfiset.algorithms.utils.TestUtils;
 import java.util.*;
-import org.junit.*;
+import org.junit.jupiter.api.*;
 
 public class LongestCommonSubstringTest {
 

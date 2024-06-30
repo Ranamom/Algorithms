@@ -5,7 +5,7 @@ import static com.google.common.truth.Truth.assertThat;
 import com.google.common.collect.ImmutableList;
 import java.util.*;
 import org.apache.commons.lang3.tuple.Pair;
-import org.junit.*;
+import org.junit.jupiter.api.*;
 
 public class BridgesAdjacencyListIterativeTest {
 
